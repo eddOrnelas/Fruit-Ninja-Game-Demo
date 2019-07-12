@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Fruit Ninja Game Demo</title>
+	<script src="./js/phaser.min.js"></script>
+	<script src="./js/gameConfig.js"></script>
+	<script src="./js/GameBoot.js"></script>
+	<script src="./js/GameLoadingScreen.js"></script>
+	<script src="./js/GamePlay.js"></script>
+	<style type="text/css">
+		#gameContainer canvas {
+			display: block;
+	    touch-action: none;
+	    user-select: none;
+	    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	    margin-left: 0px;
+	    margin-top: 57px;
+	    margin-bottom: -56px;
+	    cursor: inherit;
+	    width: 1280px;
+	    height: 720px;
+	    max-width: 1280px;
+		}
+		
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #49abbf;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="gameContainer"></div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			var game = new Phaser.Game(
+				gameConfig.width,
+				gameConfig.height,
+				Phaser.AUTO,
+				null,
+				false,
+				false,
+				false
+			);
+			game.state.add('GameBoot', MainGameContainer.GameBoot);
+			game.state.add('GameLoadingScreen', MainGameContainer.GameLoadingScreen);
+			game.state.add('GamePlay', MainGameContainer.GamePlay);
+
+			game.state.start('GameBoot');
+
+		};
+	</script>
+
+</body>
+
+</html>
